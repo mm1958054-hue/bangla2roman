@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Bangla to Roman Converter</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    textarea {
+      width: 100%;
+      height: 100px;
+      margin-bottom: 10px;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+  <h2>Bangla to Roman Converter</h2>
+  <textarea id="banglaInput" placeholder="বাংলা লিখো..."></textarea>
+  <textarea id="romanOutput" placeholder="Romanized output..." readonly></textarea>
+
+  <script>
+    const mapping = {
+      'ক': 'k', 'খ': 'kh', 'গ': 'g', 'ঘ': 'gh', 'ঙ': 'ng',
+      'চ': 'ch', 'ছ': 'chh', 'জ': 'j', 'ঝ': 'jh', 'ঞ': 'n',
+      'ট': 't', 'ঠ': 'th', 'ড': 'd', 'ঢ': 'dh', 'ণ': 'n',
+      'ত': 't', 'থ': 'th', 'দ': 'd', 'ধ': 'dh', 'ন': 'n',
+      'প': 'p', 'ফ': 'ph', 'ব': 'b', 'ভ': 'bh', 'ম': 'm',
+      'য': 'j', 'র': 'r', 'ল': 'l', 'শ': 'sh', 'ষ': 'sh',
+      'স': 's', 'হ': 'h', 'আ': 'a', 'ই': 'i', 'ঈ': 'ee',
+      'উ': 'u', 'ঊ': 'oo', 'এ': 'e', 'ঐ': 'oi', 'ও': 'o', 'ঔ': 'ou',
+      'া': 'a', 'ি': 'i', 'ী': 'ee', 'ু': 'u', 'ূ': 'oo',
+      'ে': 'e', 'ৈ': 'oi', 'ো': 'o', 'ৌ': 'ou', 'ঁ': 'n',
+      '্': '', 'য়': 'y', 'ৎ': 't', 'ং': 'ng'
+    };
+
+    function convertToRoman(banglaText) {
+      return banglaText.split('').map(char => mapping[char] || char).join('');
+    }
+
+    document.getElementById('banglaInput').addEventListener('input', function () {
+      const inputText = this.value;
+      const romanText = convertToRoman(inputText);
+      document.getElementById('romanOutput').value = romanText;
+    });
+  </script>
+</body>
+</html>
